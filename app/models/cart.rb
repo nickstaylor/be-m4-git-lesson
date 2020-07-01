@@ -10,7 +10,9 @@ class Cart
   end
 
   def cart_total_price
-    contents.map { |key, value| Item.find(key).price * value }.sum
+    contents.map do |key, value|
+       Item.find(key).price * value
+     end.sum
   end
 
   def retrieve_items
@@ -24,6 +26,7 @@ class Cart
 
   def count_of(id)
     contents[id.to_s]
+    # comments here!
   end
 
   def total
@@ -32,6 +35,7 @@ class Cart
 
   def remove_item(id)
     contents.delete(id.to_s)
+    #  another comment!
   end
 
   def item_subtotal(id)
